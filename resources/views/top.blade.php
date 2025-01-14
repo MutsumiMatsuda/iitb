@@ -36,6 +36,7 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <!--- <li><a href="oshirase01.html">国内･海外旅行</a></li>   --->
 <!--- <li><a href="oshirase01.html">お知らせ</a></li>  --->
 <li><a href="http://iitb.jp/company01.html">会社案内 </a></li>
+<li><a href="mailto:info@iitb.jp?subject=&amp;body=">お問い合わせ</a></li>
 <!--- <li><a href="contact.html">お問い合わせ</a></li>  --->
 </ul>
 </nav>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopController;
 
+//管理画面のファイル呼び出し
+include __DIR__ . '/admin.php';
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,3 +21,8 @@ use App\Http\Controllers\TopController;
 });*/
 
 Route::get('/', [TopController::class, 'index']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

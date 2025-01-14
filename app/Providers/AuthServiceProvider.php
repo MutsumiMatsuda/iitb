@@ -16,11 +16,19 @@ class AuthServiceProvider extends ServiceProvider
         //
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     */
-    public function boot(): void
+    /*protected function mapAdminRoutes()
     {
-        //
+        Route::prefix('admin')
+             ->middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/admin.php'));
     }
+    */
+
+    public function boot()
+    {
+        //parent::boot();
+        //$this->mapAdminRoutes();
+    }
+
 }
