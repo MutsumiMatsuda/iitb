@@ -3,18 +3,18 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Plan;
+use App\Models\Notice;
 use Carbon\Carbon;
 
-class PlanController extends Controller
+class NoticeController extends Controller
 {
   public function index() {
-    $plans = Plan::getAllValid();
-    return view('admin.plan.index', compact(['plans']));
+    $notices = Notice::getAllValid();
+    return view('admin.notice.index', compact(['notices']));
   }
 
   public function add() {
-    return view('admin.plan.create');
+    return view('admin.notice.create');
   }
 
   /*
@@ -22,18 +22,18 @@ class PlanController extends Controller
   */
   public function create(Request $rq) {
     // Validation
-    $this->validate($rq, Plan::$rules);
+    $this->validate($rq, Notice::$rules);
 
     // 旅行プランを保存
-    $plan = new Plan;
+    $notice = new Notice;
     $form = $rq->all();
 
     // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
     if (isset($form['img'])) {
         $path = $request->file('img')->store('public/image');
-        $plan->img = basename($path);
+        $notice->img = basename($path);
     } else {
-        $plan->img = null;
+        $notice->img = null;
     }
 
     // フォームから送信されてきた_tokenを削除する
@@ -42,21 +42,21 @@ class PlanController extends Controller
     unset($form['img']);
 
     // データベースに保存する
-    $plan->fill($form);
-    $plan->save();
+    $notice->fill($form);
+    $notice->save();
 
-    return redirect('admin/plan');
+    return redirect('admin/notice');
   }
 
   /*
     編集多面表示
   */
   public function edit(Request $rq) {
-    $plan = Plan::find($rq->id);
-    if (empty($plan)) {
+    $notice = Notice::find($rq->id);
+    if (empty($notice)) {
       abort(404);
     }
-    return view('admin.plan.edit', compact(['plan']));
+    return view('admin.notice.edit', compact(['notice']));
   }
 
   /*
@@ -64,11 +64,11 @@ class PlanController extends Controller
   */
   public function update(Request $rq) {
     // Validation
-    $this->validate($rq, Plan::$rules);
+    $this->validate($rq, Notice::$rules);
 
     // 旅行プランを保存
-    $plan = Plan::find($rq->id);
-    if (empty($plan)) {
+    $notice = Notice::find($rq->id);
+    if (empty($notice)) {
       abort(404);
     }
 
@@ -78,55 +78,55 @@ class PlanController extends Controller
     /*
     if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
-        $plan->image_path = basename($path);
+        $notice->image_path = basename($path);
     } else {
-        $plan->image_path = null;
+        $notice->image_path = null;
     }
     */
 
     // フォームから送信されてきた_tokenを削除する
     unset($form['_token']);
     // フォームから送信されてきたimageを削除する
-    unset($form['image']);
+    // unset($form['image']);
 
     // データベースに保存する
-    $plan->fill($form);
-    $plan->save();
+    $notice->fill($form);
+    $notice->save();
 
-    return redirect('admin/plan');
+    return redirect('admin');
   }
 
   /*
     旅行プランを非表示にする
   */
   public function hide(Request $rq) {
-    $plan = Plan::find($rq->id);
-    if (empty($plan)) {
+    $notice = Notice::find($rq->id);
+    if (empty($notice)) {
       abort(404);
     }
 
-    $plan->hidden_at = Carbon::now();
-    $plan->save();
-    return redirect('admin/plan');
+    $notice->hidden_at = Carbon::now();
+    $notice->save();
+    return redirect('admin/Notice');
   }
 
   /*
     非表示旅行プラン一覧の表示
   */
   public function hiddenIndex() {
-    $plans = Plan::getAllDeleted();
-    return view('admin.plan.hidden', compact(['plans']));
+    $notices = Notice::getAllDeleted();
+    return view('admin.notice.hidden', compact(['Notices']));
   }
 
   /*
     非表示旅行プランを表示
   */
   public function expose(Request $rq) {
-    $plan = Plan::find($rq->id);
-    if (empty($plan)) {
+    $notice = Notice::find($rq->id);
+    if (empty($notice)) {
       abort(404);
     }
-    $plan->hidden_at = null;
-    $plan->save();
-    return redirect('admin/plan');  }
+    $notice->hidden_at = null;
+    $notice->save();
+    return redirect('admin/Notice');  }
 }

@@ -20,11 +20,11 @@ class Plan extends Model
 
   // 有効なプランを日付の降順で取得
   public static function getAllValid() {
-    return self::where('deleted_at', null)->orderBy('day', 'desc')->get();
+    return self::where('hidden_at', null)->orderBy('day', 'desc')->get();
   }
 
   // 削除されたプランを日付の降順で取得
   public static function getAllDeleted() {
-    return self::whereNotNull('deleted_at')->orderBy('day', 'desc')->get();
+    return self::whereNotNull('hidden_at')->orderBy('day', 'desc')->get();
   }
 }

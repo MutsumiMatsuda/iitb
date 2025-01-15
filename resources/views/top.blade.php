@@ -55,11 +55,15 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <p><b>　　　　タヒチ、水上コテージの風景。</b></p>
 </div>
 <section class="page">
+
+<!--
 <section class="page"><marquee width="600" bgcolor="Yellow"><b> <span style="color : #ff0000;">〇えちぜん店、10月24日(木)臨時休業します！！。</span> 　　　　　　　　　　　　　　　　　2024年下期タヒチ　パンフレット出来上がりました、福井の旅行会社が造成するタヒチです、地方空港からのタヒチは、
 弊社にお任せください。10月29日よりエア タヒチ ヌイ運航再開します、お出かけお待ちしております。
 
 
 </b></marquee>
+-->
+<section class="page"><marquee width="600" bgcolor="Yellow"><b>{!!$notice->line!!}</b></marquee>
 <ul>
  <!--- 　　 --->
 </ul>
@@ -69,7 +73,7 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <p>　　　福井旅行が企画・実施するおすすめの旅です、国内旅行・日帰りから、海外旅行まで福井又は小松空港発着の旅です、<br>
 　　　皆様のご参加お待ちし申し上げます。</p>
 <ul>
-<!--------　--------->
+<!--------　
  <li><time datetime="2024-09-01">09/01</time>2024年10月～2025年3月のタヒチのパンフレットできました</li>
    <li>　　　　　　<a href="http://iitb.jp/tabiinfo24_01.html">奇跡のブルーが煌めく　南太平洋の、憧れの楽園；タヒチ５・８日間;小松空港発着</a> <br> </li>
 
@@ -77,8 +81,21 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 
  <li><time datetime="2024-04-29">04/27</time><a href="http://iitb.jp/tabiinfo24_07.html">まなびっこツアー、お仕事体験ツアー沖縄４日間</a>  <br>  </li>
   <li><time datetime="2024-03-25">03/25</time><a href="http://iitb.jp/tabiinfo24_06.html">2024年４月からの、らくらく台北４日間；小松発着、エバー航空で行く　</a>   </li>
+--------->
 
  <!--- <li><time datetime="2024-02-10">02/10</time><a href="tabiinfo24_03.html">らくらく台北４日間；小松発着、エバー航空で行く</a>   </li></ --->
+@foreach($plans as $plan)
+  @php
+    $obj = new \Carbon\Carbon($plan->day);
+    $day = $obj->format('Y/m/d');
+  @endphp
+  @if($plan->note != null)
+  <li><time datetime="{{$plan->day}}">{{$day}}</time>{{$plan->note}}</li>
+  <li>　　　　　　<a href="{{$plan->link}}">{{$plan->name}}</a> <br> </li>
+  @else
+  <li><time datetime="{{$plan->day}}">{{$day}}</time><a href="{{$plan->link}}">{{$plan->name}}</a>  <br></li>
+  @endif
+@endforeach
 
   <li></li>
 </ul>

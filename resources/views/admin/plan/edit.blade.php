@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', '旅行プラン新規作成')
+@section('title', '旅行プラン編集')
 @section('content')
   <div class="container">
     <div class="row">

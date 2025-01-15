@@ -11,5 +11,5 @@ return [
   'forgetpass' => 'パスワードを忘れた場合',
   'admin_dashboard' => '管理者トップページ',
   'admin_plan_index' => 'プラン一覧(管理者用)',
-  'admin_deleted_plan_index' => '削除済みプラン一覧',
+  'admin_hidden_plan_index' => '非表示旅行プラン一覧',
 ];
