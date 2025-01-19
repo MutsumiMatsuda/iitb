@@ -19,8 +19,12 @@ include __DIR__ . '/admin.php';
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+Route::get('phpinfo', function () {
+  return phpinfo();
+});
 
-Route::get('/', [TopController::class, 'index']);
+Route::get('/', [TopController::class, 'index'])->name('index');
+Route::get('plan_detail', [TopController::class, 'planDetail'])->name('plan.detail');
 
 Auth::routes();
 

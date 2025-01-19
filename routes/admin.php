@@ -23,6 +23,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
   Route::get('plan/hide', [PlanController::class, 'hide'])->name('admin.plan.hide');
   Route::get('plan/hidden', [PlanController::class, 'hiddenIndex'])->name('admin.plan.hidden');
   Route::get('plan/expose', [PlanController::class, 'expose'])->name('admin.plan.expose');
+  Route::get('plan/mvup', [PlanController::class, 'mvup'])->name('admin.plan.mvup');
+  Route::get('plan/mvdw', [PlanController::class, 'mvdw'])->name('admin.plan.mvdw');
 
   Route::get('notice/edit', [NoticeController::class, 'edit'])->name('admin.notice.edit');
   Route::post('notice/update', [NoticeController::class, 'update'])->name('admin.notice.update');

@@ -16,8 +16,6 @@
 <meta name="viewport" content="width=device-width">
 <meta name="GENERATOR" content="JustSystems Homepage Builder Version 22.0.2.0 for Windows">
 <script src="{{ asset('js/app.js') }}" defer></script>
-<link rel="stylesheet" href="css/mystyle.css">
-
 <!-- bootstrapのCSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
 integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -25,11 +23,12 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <!-- slickのCSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
+<link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
 <header>
 <div class="header-in">
-  <img src="{{ asset('img/fktblogo4.gif') }}" width="300" height="56" alt="福井旅行・logo">
+  <img src="{{ asset('img/icons/fktblogo.png') }}" alt="福井旅行・logo">
   <nav>
  <ul>
 <li>トップ</li>
@@ -89,11 +88,11 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
     $obj = new \Carbon\Carbon($plan->day);
     $day = $obj->format('Y/m/d');
   @endphp
-  @if($plan->note != null)
-  <li><time datetime="{{$plan->day}}">{{$day}}</time>{{$plan->note}}</li>
-  <li>　　　　　　<a href="{{$plan->link}}">{{$plan->name}}</a> <br> </li>
+  @if(!empty($plan->news))
+  <li><time datetime="{{$plan->day}}">{{$day}}</time>{{$plan->news}}</li>
+  <li>　　　　　　<a href="{{route('plan.detail') . '?id=' . $plan->id}}">{{$plan->title}}</a> <br> </li>
   @else
-  <li><time datetime="{{$plan->day}}">{{$day}}</time><a href="{{$plan->link}}">{{$plan->name}}</a>  <br></li>
+  <li><time datetime="{{$plan->day}}">{{$day}}</time><a href="{{route('plan.detail') . '?id=' . $plan->id}}">{{$plan->title}}</a>  <br></li>
   @endif
 @endforeach
 

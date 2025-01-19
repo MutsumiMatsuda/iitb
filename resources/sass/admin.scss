@@ -48,3 +48,22 @@ body {
   border-color: #fff;
   background-color: #000;
 }
+
+/* 表示順変更用アイコン */
+.ordered{
+    display: block;
+    width: auto;
+    box-sizing: border-box;
+    background: #fafad2;
+    padding: 15px 25px 15px 5px;
+    text-align: left;
+}
+
+.notordered{
+    display: block;
+    width: auto;
+    box-sizing: border-box;
+    background: #9ef4ff;
+    padding: 15px 25px 15px 5px;
+    text-align: left;
+}
