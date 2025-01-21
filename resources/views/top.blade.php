@@ -108,50 +108,18 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 
 <section class="page">
 <h2>お知らせ</h2>
-<ul>
-  <li><time datetime="2024-09-14">09/14</time>営業時間 ご案内　</li>
- <!--- <li>　　　　　<span style="color : #ff0000;">５月３日(金)を臨時休業とさせていただきます。</span></li>　　--->
-  <li>　　　　　〇ベルトラベルサロン</li>
-<li>　　　　　　　　　臨時休業お知らせ</li>
-  <li>　　　　　　　　　　　⇒<span style="color : #ff0000;">８月14日(水)を臨時休業とさせていただきます。</span></li>
-
-  <li>　　　　　　　　　月曜日～金曜日；　10:00～18:30 </li>
-  <li>　　　　　　　　　土・日曜日・祭日；10:00～17::30</li>
-  <li>　　　　　　　　　<span style="color : #ff0000;">木曜日；　　　　　定休日</span></li>
-  <li>　　　　　〇えちぜえんトラベルサロン</li>
-  <li>　　　　　　　　　えちぜん店臨時休業お知らせ</li>
-  <li>　　　　　　　　　　　⇒<a href="http://iitb.jp/image/echizen10gatsu_yasumi.pdf" target="_blank"><span style="color : #ff0000;">１０月24(日)臨時休業とさせていただきます。</span></a></li>
-  <li>　　　　　　　　　月曜日；14:00～18:30</li>
-  <li>　　　　　　　　　火・木曜日；10:00～18:30</li>
-  <li>　　　　　　　　　土曜日；10:00～17:30</li>
-  <li>　　　　　　　　　<span style="color : #000000;">金・日曜日</span><span style="color : #ff0000;">「店頭は休業」</span><span style="color : #ff0000;">ご予約で対応させて頂きます。</span></li>
-  <li>　　　　　　　　　<span style="color : #ff0000;">水曜日；定休日</span></li>
-
-  <li>　　　　　　　　　ご不便をお掛けいたしますがご利用賜ります様、よろしくお願いします。</li>
-  <li></li>
-  <li></li>
-</ul>
-
-<ul>
-  <li><time datetime="2024-04-27">04/27</time>  北陸応援割の受付の 終了させていただきました。</li>
-  <li>　　　　　　「北陸応援割り」終了させていただきます、多くのお客様にご利用いただき感謝申し上げます、ありがとうございました。</li>
-  <li>　　　　　　お客様のご意見、ご感想など賜れれば幸いです、今後とも福井旅行(株)ご利用賜ります様お願い申し上げます。</li>
-</ul>
-
-<ul>
-  <li><time datetime="2024-02-10">02/10</time>福井旅行の商品券　</li>
-
-  <li>　　　　　　　　　福井旅行の古い商品券が眠っていませんか？。　</li>
-  <li>　　　　　　　　　弊社発行の商品券がございましたら是非お使いになりご旅行にお出かけください。 </li>
-  <li>　　　　　　　　　有効期限はございません、ご利用お待ちしております。</li>
-  <li></li>
-
-  <li></li>
-
-  <li><p></p></li>
- <li><p><b>○弊社ホームページ更新中、ご不便をお掛けいたしますが順次整えますのでよろしくお願いします。</b></p></li>
-</ul>
-
+@foreach($news as $item)
+  @php
+    $obj = new \Carbon\Carbon($item->day);
+    $day = $obj->format('Y/m/d');
+  @endphp
+<div class="row">
+  <div class="col-md-10 card">
+    <div class="card-header"><time datetime="{{$item->day}}">{{$day}}</time>：{{$item->title}}</div>
+    <div class="card-body">{!!nl2br($item->line)!!}</div>
+  </div>
+</div>
+@endforeach
 </section>
 
 </article>

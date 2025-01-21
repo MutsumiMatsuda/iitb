@@ -9,7 +9,7 @@
 
         <div class="card-body yr-1">
           <div class="card card-body bg-info text-center">
-            <a class="nav-link" href="{{ route('admin.notice.edit') . '?id=1' }}">ニュース管理</a>
+            <a class="nav-link" href="{{ route('admin.news.index') }}">お知らせ管理</a>
           </div>
         </div>
 
@@ -21,13 +21,19 @@
 
         <div class="card-body yr-1">
           <div class="card card-body bg-info text-center">
+            <a class="nav-link" href="{{ route('admin.notice.edit') . '?id=1' }}">テロップ管理</a>
+          </div>
+        </div>
+
+        <div class="card-body yr-1">
+          <div class="card card-body bg-info text-center">
             <a class="nav-link" href="{{ route('admin.plan.hidden') }}">非表示旅行プラン管理</a>
           </div>
         </div>
 
         <div class="card-body yr-1">
           <div class="card card-body bg-info text-center">
-            お知らせ管理
+            <a class="nav-link" href="{{ route('admin.news.hidden') }}">非表示お知らせ管理</a>
           </div>
         </div>
 

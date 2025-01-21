@@ -15,14 +15,19 @@
                 <span style="color:#eeeeee; font-weight:bold; font-size:20px">{{$plan->title}}</span>
               </div>
               <div class="col-md-2">
+                @if($plan->id != $plans->first()->id)
                 <a href="{{route('admin.plan.mvup') . '?id=' . $plan->id}}" class="ordered"><img src="{{asset('img/icons/mvup.png')}}" alt="上へ" /></a>
+                @endif
               </div>
             </div>
             <div class="row">
               <div class="col-md-2"><a href="{{ route('admin.plan.edit') . '?id=' . $plan->id }}" class="btn btn-primary">編集</a></div>
               <div class="col-md-4"><a href="{{ route('admin.plan.hide') . '?id=' . $plan->id }}" class="btn btn-secondary">非表示にする</a></div>
               <div class="col-md-4"></div>
+
+              @if($plan->id != $plans->last()->id)
               <div class="col-md-2"><a href="{{route('admin.plan.mvdw') . '?id=' . $plan->id}}" class="ordered"><img src="{{asset('img/icons/mvdw.png')}}" alt="下へ" /></a></div>
+              @endif
             </div>
           </div>
         </div>

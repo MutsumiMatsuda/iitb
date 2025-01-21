@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\TopController;
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\LoginController;
 
@@ -25,6 +26,17 @@ Route::prefix('admin')->middleware('auth:admin')->group(function () {
   Route::get('plan/expose', [PlanController::class, 'expose'])->name('admin.plan.expose');
   Route::get('plan/mvup', [PlanController::class, 'mvup'])->name('admin.plan.mvup');
   Route::get('plan/mvdw', [PlanController::class, 'mvdw'])->name('admin.plan.mvdw');
+
+  Route::get('news', [NewsController::class, 'index'])->name('admin.news.index');
+  Route::get('news/add', [NewsController::class, 'add'])->name('admin.news.add');
+  Route::post('news/create', [NewsController::class, 'create'])->name('admin.news.create');
+  Route::get('news/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
+  Route::post('news/update', [NewsController::class, 'update'])->name('admin.news.update');
+  Route::get('news/hide', [NewsController::class, 'hide'])->name('admin.news.hide');
+  Route::get('news/hidden', [NewsController::class, 'hiddenIndex'])->name('admin.news.hidden');
+  Route::get('news/expose', [NewsController::class, 'expose'])->name('admin.news.expose');
+  Route::get('news/mvup', [NewsController::class, 'mvup'])->name('admin.news.mvup');
+  Route::get('news/mvdw', [NewsController::class, 'mvdw'])->name('admin.news.mvdw');
 
   Route::get('notice/edit', [NoticeController::class, 'edit'])->name('admin.notice.edit');
   Route::post('notice/update', [NoticeController::class, 'update'])->name('admin.notice.update');
