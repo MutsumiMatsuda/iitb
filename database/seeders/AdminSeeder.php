@@ -14,6 +14,7 @@ class AdminSeeder extends Seeder
      */
     public function run(): void
     {
+      DB::table('admins')->truncate();
       DB::table('admins')->insert([
         [
           'name' => '小林敏博',
