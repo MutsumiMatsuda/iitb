@@ -65,7 +65,7 @@ class TopController extends Controller
     $apl->save();
 
     // メール送信
-    Mail::to('try-us@ab.auone-net.jp')->send(new ApplyMail($apl));
+    Mail::to('kobato3455@iitb.jp')->send(new ApplyMail($apl));
 
     return view('plan_apply_done', compact(['apl']));
   }
