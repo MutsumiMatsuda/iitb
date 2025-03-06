@@ -24,6 +24,25 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
 <link rel="stylesheet" href="css/mystyle.css">
+
+<!-- カードの背景色 -->
+<style>
+.plan_title {
+  font-weight: bold;
+  background-color: #fddea5;
+}
+.plan_news {
+  background-color: #fde8d0;
+}
+.news_title {
+  font-weight: bold;
+  background-color: #cee4ae;
+}
+.news_line {
+  background-color: #dff5bf;
+}
+</style>
+
 </head>
 <body>
 <header>
@@ -35,7 +54,7 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 <!--- <li><a href="oshirase01.html">国内･海外旅行</a></li>   --->
 <!--- <li><a href="oshirase01.html">お知らせ</a></li>  --->
 <li><a href="http://iitb.jp/company01.html">会社案内 </a></li>
-<li><a href="mailto:info@iitb.jp?subject=&amp;body=">お問い合わせ</a></li>
+<li><a href="/plan_apply">お申し込み</a></li>
 <!--- <li><a href="contact.html">お問い合わせ</a></li>  --->
 </ul>
 </nav>
@@ -62,16 +81,15 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 
 </b></marquee>
 -->
-<section class="page"><marquee width="600" bgcolor="Yellow"><b>{!!$notice->line!!}</b></marquee>
-<ul>
- <!--- 　　 --->
-</ul>
-</section>
+<div class="row mb-2"><div class="col-md-8 mx-auto">
+  <section class="page"><marquee bgcolor="Yellow"><b>{!!$notice->line!!}</b></marquee></section>
+</div></div>
+
 <h2>旅のご案内</h2>
 <h3>当社おすすめの旅</h3>
 <p>　　　福井旅行が企画・実施するおすすめの旅です、国内旅行・日帰りから、海外旅行まで福井又は小松空港発着の旅です、<br>
 　　　皆様のご参加お待ちし申し上げます。</p>
-<ul>
+
 <!--------　
  <li><time datetime="2024-09-01">09/01</time>2024年10月～2025年3月のタヒチのパンフレットできました</li>
    <li>　　　　　　<a href="http://iitb.jp/tabiinfo24_01.html">奇跡のブルーが煌めく　南太平洋の、憧れの楽園；タヒチ５・８日間;小松空港発着</a> <br> </li>
@@ -83,27 +101,28 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
 --------->
 
  <!--- <li><time datetime="2024-02-10">02/10</time><a href="tabiinfo24_03.html">らくらく台北４日間；小松発着、エバー航空で行く</a>   </li></ --->
+<section>
 @foreach($plans as $plan)
+<div class="row mb-2">
+  <div class="col-md-10 card mb-2 plan_news mx-auto">
   @php
     $obj = new \Carbon\Carbon($plan->day);
     $day = $obj->format('Y/m/d');
   @endphp
+  <!-- <time datetime="{{$plan->day}}">{{$day}}</time> -->
   @if(!empty($plan->news))
-  <li><time datetime="{{$plan->day}}">{{$day}}</time>{{$plan->news}}</li>
-  <li>　　　　　　<a href="{{route('plan.detail') . '?id=' . $plan->id}}">{{$plan->title}}</a> <br> </li>
+    <a href="{{route('plan.detail') . '?id=' . $plan->id}}">
+      <div class="card-header plan_title">{{$plan->title}}</div>
+      <div class="card-body plan_news">※{{$plan->news}}</div>
+    </a>
   @else
-  <li><time datetime="{{$plan->day}}">{{$day}}</time><a href="{{route('plan.detail') . '?id=' . $plan->id}}">{{$plan->title}}</a>  <br></li>
+    <a href="{{route('plan.detail') . '?id=' . $plan->id}}">
+      <div class="card-header plan_title">{{$plan->title}}</div>
+    </a>
   @endif
+  </div>
+</div>
 @endforeach
-
-  <li></li>
-</ul>
-<ul>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
 </section>
 
 <section class="page">
@@ -114,9 +133,9 @@ integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUU
     $day = $obj->format('Y/m/d');
   @endphp
 <div class="row">
-  <div class="col-md-10 card">
-    <div class="card-header"><time datetime="{{$item->day}}">{{$day}}</time>：{{$item->title}}</div>
-    <div class="card-body">{!!nl2br($item->line)!!}</div>
+  <div class="col-md-10 card mb-2 news_line mx-auto">
+    <div class="card-header news_title"><time datetime="{{$item->day}}">{{$day}}</time>：{{$item->title}}</div>
+    <div class="card-body news_line">{!!nl2br($item->line)!!}</div>
   </div>
 </div>
 @endforeach

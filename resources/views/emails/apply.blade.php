@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <h1>{{$apl->name}}様のお申し込みメール</h1>
+    <table>
+      <tr><th>お名前</th><td>{{$apl->name}}</td></tr>
+      <tr><th>よみがな</th><td>{{$apl->kana}}</td></tr>
+      <tr><th>郵便番号</th><td>{{$apl->zip}}</td></tr>
+      <tr><th>住所</th><td>{{$apl->address}}</td></tr>
+      <tr><th>電話</th><td>{{$apl->tel}}</td></tr>
+      <tr><th>メール</th><td>{{$apl->email}}</td></tr>
+      <tr><th>旅行プラン</th><td>{{$apl->plan()->title}}</td></tr>
+      <tr><th>大人参加人数</th><td>{{$apl->adults}}</td></tr>
+      <tr><th>子供参加人数</th><td>{{$apl->children}}</td></tr>
+      <tr><th>出発日</th><td>{{$apl->day}}</td></tr>
+    </table>
+    <h2>メッセージ</h2>
+    {!!nl2br($apl->message)!!}
+  </body>
+</html>

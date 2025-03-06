@@ -26,6 +26,10 @@ Route::get('phpinfo', function () {
 Route::get('/', [TopController::class, 'index'])->name('index');
 Route::get('plan_detail', [TopController::class, 'planDetail'])->name('plan.detail');
 
+Route::get('plan_apply', [TopController::class, 'planApply'])->name('plan.apply');
+Route::post('plan_apply_confirm', [TopController::class, 'planApplyConfirm'])->name('plan.apply.confirm');
+Route::post('plan_apply_done', [TopController::class, 'planApplyDone'])->name('plan.apply.done');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

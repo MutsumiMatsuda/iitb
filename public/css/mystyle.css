@@ -211,62 +211,62 @@ button{
 
 /* 959px以下の場合 */
 @media(max-width:959px){
-header img{
-	float:none;
-}
-nav ul{
-	text-align:left;
-	padding:0;
-}
-article{
-	width:auto;
-}
-article img{
-	max-width:100%;
-	height:auto;
-}
-.header-in{
-	width:auto;
-}
-.bukken-kiji{
-	float:none;
-	width:100%;
-}
-aside{
-	float:none;
-}
+	header img{
+		float:none;
+	}
+	nav ul{
+		text-align:left;
+		padding:0;
+	}
+	article{
+		width:auto;
+	}
+	article img{
+		max-width:100%;
+		height:auto;
+	}
+	.header-in{
+		width:auto;
+	}
+	.bukken-kiji{
+		float:none;
+		width:100%;
+	}
+	aside{
+		float:none;
+	}
 }
 
 /* 600px以下の場合 */
 @media(max-width:600px){
-nav li{
-	font-size:75%;
-	padding-left:2px;
-	padding-right:2px;
-}
-.catch{
-	top:5px;
-	left:5px;
-}
-.point-img{
-	float:none;
-}
-video{
-	max-width:100%;
-	height:auto;
-}
-iframe{
-	max-width:100%;
-}
-input,textarea{
-	width:320px;
-}
+	nav li{
+		font-size:75%;
+		padding-left:2px;
+		padding-right:2px;
+	}
+	.catch{
+		top:5px;
+		left:5px;
+	}
+	.point-img{
+		float:none;
+	}
+	video{
+		max-width:100%;
+		height:auto;
+	}
+	iframe{
+		max-width:100%;
+	}
+	input,textarea{
+		width:320px;
+	}
 }
 
 /* プリント出力 */
 @media print{
-.catch{
-	color:#000000;
-	text-shadow:none;
-}
+	.catch{
+		color:#000000;
+		text-shadow:none;
+	}
 }
